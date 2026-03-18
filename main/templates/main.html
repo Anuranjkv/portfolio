@@ -1,27 +1,166 @@
-<html><head><title>portfolio</title>
+
+<html>
+<head>
+<title>Portfolio</title>
+
 <style>
-body{
-    background-color: rgb(0, 0, 0);
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0f172a;
+    margin: 0;
+    color: white;
+    padding-top: 70px;
 }
 
-    .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #010301;
-        color: blanchedalmond;
-        border: 2px solid #917474;
-        border-radius: 20px;
-    }
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #020617;
+    padding: 15px 0;
+    z-index: 1000;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    color: #38bdf8;
+}
+
+/* Background Image */
+.bg-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.2;
+    filter: blur(1px);
+}
+
+/* Sections */
+.section {
+    padding: 40px;
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 10px;
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(1%);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.section:hover {
+    transform: translateY(-5px);
+}
+
+/* Welcome */
+.welcome {
+    background: linear-gradient(90deg, #3b82f6, #06b6d4);
+    text-align: center;
+    color: white;
+}
+
+/* Profile 
+.profile-section {
+    text-align: center;
+    margin-top: 20px;
+}*/
+
+.profile-pic {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #38bdf8;
+
+}
+
+/* Text */
+#intro {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #cbd5f5;
+}
+
+/* Links */
+a {
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
 </style>
 </head>
-<body>
-    <div class="profile">
-        <img>
-    </div>
-    <div class="container">
-        <h1>Welcome to My Portfolio</h1>
-        <p>This is a simple portfolio website built with Django.</p>
-    </div>
 
-</body></html>
+<body>
+
+<!-- Background -->
+<img src="../static/images/bg.png" class="bg-img">
+
+<!-- Header -->
+<header class="header">
+    <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- Profile
+<div class="profile-section">
+    <img src="{% static 'images/profile.jpg' %}" alt="Anuranj" class="profile-pic">
+</div>
+ -->
+<!-- Welcome -->
+<div class="section welcome" id="home">
+    <h1>Welcome to my portfolio</h1>
+</div>
+
+<!-- About -->
+<div class="section" id="about">
+    <h1>Hi, I'm Anuranj K V</h1>
+    <div id="intro">
+        I’m a BCA student focused on web development and real-world projects.<br>
+        I work with Python, Django, and Git, building systems like authentication and CRUD apps.<br>
+        My goal is to become a full-stack developer and create impactful digital solutions.
+    </div>
+</div>
+
+<!-- Projects -->
+<div class="section" id="projects">
+    <h2>Projects</h2>
+    <p>
+        <a href="https://portfolio-fuy4.onrender.com/" target="_blank">
+            My Portfolio Project
+        </a>
+    </p>
+</div>
+
+<!-- Contact -->
+<div class="section" id="contact">
+    <h2>Contact Me</h2>
+    <p><a href="https://github.com/anuranjkv" target="_blank">GitHub</a></p>
+    <p><a href="https://wa.me/918075708270" target="_blank">WhatsApp</a></p>
+    <p><a href="https://www.linkedin.com/in/anuranj-k-v-0b5a8b20a/" target="_blank">LinkedIn</a></p>
+    <p><a href="mailto:anuranjkv.work@gmail.com">Email</a></p>
+</div>
+
+</body>
+</html>
