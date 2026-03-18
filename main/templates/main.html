@@ -1,4 +1,4 @@
-
+{% load static %}
 <html>
 <head>
 <title>Portfolio</title>
@@ -7,6 +7,9 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #0f172a;
+    background-image: url('../static/images/bg.png');
+    background-size: cover;
+    background-attachment: fixed;
     margin: 0;
     color: white;
     padding-top: 70px;
@@ -37,17 +40,15 @@ body {
     color: #38bdf8;
 }
 
-/* Background Image */
+/* Background */
 .bg-img {
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     z-index: -1;
     opacity: 0.2;
-    filter: blur(1px);
+    filter: blur(2px);
 }
 
 /* Sections */
@@ -56,8 +57,8 @@ body {
     margin: 20px auto;
     width: 80%;
     border-radius: 10px;
-    background: rgba(30, 41, 59, 0.8);
-    backdrop-filter: blur(1%);
+    background: rgba(30, 41, 59, 0.85);
+    backdrop-filter: blur(10px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     transition: 0.3s;
 }
@@ -70,40 +71,65 @@ body {
 .welcome {
     background: linear-gradient(90deg, #3b82f6, #06b6d4);
     text-align: center;
-    color: white;
 }
 
-/* Profile 
-.profile-section {
-    text-align: center;
-    margin-top: 20px;
-}*/
+/* 🔥 CAROUSEL */
+.carousel-container {
+    perspective: 1200px;
+    width: 400px;
+    height: 250px;
+    margin: 80px auto;
+}
 
-.profile-pic {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #38bdf8;
+.carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotate 15s infinite linear;
+}
 
+.carousel:hover {
+    animation-play-state: paused;
+}
+
+.card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #38bdf8;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    transition: 0.3s;
+}
+
+/* Glow */
+.card:hover {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* 3D positioning */
+.card:nth-child(1) { transform: rotateY(0deg) translateZ(250px); }
+.card:nth-child(2) { transform: rotateY(120deg) translateZ(250px); }
+.card:nth-child(3) { transform: rotateY(240deg) translateZ(250px); }
+
+@keyframes rotate {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
 }
 
 /* Text */
 #intro {
     margin-top: 20px;
-    font-size: 16px;
     line-height: 1.6;
     color: #cbd5f5;
-}
-
-/* Links */
-a {
-    color: #3b82f6;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
 }
 </style>
 </head>
@@ -111,7 +137,7 @@ a:hover {
 <body>
 
 <!-- Background -->
-<img src="../static/images/bg.png" class="bg-img">
+<img src="{% static 'images/bg.png' %}" class="bg-img">
 
 <!-- Header -->
 <header class="header">
@@ -123,14 +149,18 @@ a:hover {
     </nav>
 </header>
 
-<!-- Profile
-<div class="profile-section">
-    <img src="{% static 'images/profile.jpg' %}" alt="Anuranj" class="profile-pic">
-</div>
- -->
 <!-- Welcome -->
 <div class="section welcome" id="home">
     <h1>Welcome to my portfolio</h1>
+</div>
+
+<!-- 🔥 3D Carousel -->
+<div class="carousel-container">
+    <div class="carousel">
+        <div class="card" onclick="location.href='#about'">About</div>
+        <div class="card" onclick="location.href='#projects'">Projects</div>
+        <div class="card" onclick="location.href='#contact'">Contact</div>
+    </div>
 </div>
 
 <!-- About -->
@@ -139,7 +169,7 @@ a:hover {
     <div id="intro">
         I’m a BCA student focused on web development and real-world projects.<br>
         I work with Python, Django, and Git, building systems like authentication and CRUD apps.<br>
-        My goal is to become a full-stack developer and create impactful digital solutions.
+        My goal is to become a full-stack developer.
     </div>
 </div>
 
